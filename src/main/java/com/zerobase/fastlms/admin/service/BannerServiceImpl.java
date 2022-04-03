@@ -6,6 +6,7 @@ import com.zerobase.fastlms.admin.mapper.BannerMapper;
 import com.zerobase.fastlms.admin.model.BannerInput;
 import com.zerobase.fastlms.admin.model.BannerParam;
 import com.zerobase.fastlms.admin.repository.BannerRepository;
+import com.zerobase.fastlms.course.dto.CourseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import org.springframework.util.CollectionUtils;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -107,11 +109,18 @@ public class BannerServiceImpl implements BannerService{
 
     @Override
     public List<BannerDto> frontList(BannerParam parameter) {
-        Optional<List<Banner>> optionalBanners = Optional.of(bannerRepository.findAll());
-        if(optionalBanners.isPresent()){
-            return BannerDto.of(optionalBanners.get());
+        List<BannerDto> list = bannerMapper.selectList(parameter);
+        List<BannerDto> frontList = new ArrayList<>();
+        if(!CollectionUtils.isEmpty(list)){
+            int i = 0;
+            for(BannerDto x : list){
+                if(x.isShowYn()){
+                    frontList.add(x);
+                }
+            }
         }
-        return null;
+
+        return frontList;
     }
 
 
