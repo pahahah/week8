@@ -88,13 +88,11 @@
                     오픈 방법
                 </th>
                 <td>
-                    <form method="post" action="/admin/banner/open.do">
                         <select  th:value="${detail.openMethode}" name="openMethode" required>
                             <option value=""> 오픈 방법 선택 </option>
-                            <option value="newWindow"> 새 창으로 열기 </option>
-                            <option value="currenWindow"> 현재 창에서 열기 </option>
+                            <option value="_blank"> 새 창으로 열기 </option>
+                            <option value=""> 현재 창에서 열기 </option>
                         </select>
-                    </form>
 
 
 

@@ -35,5 +35,4 @@ public interface BannerService {
 
     List<BannerDto> frontList(BannerParam parameter);
 
-    boolean updateOpenMethode(long id, String openMethod);
 }

@@ -114,15 +114,5 @@ public class BannerServiceImpl implements BannerService{
         return null;
     }
 
-    @Override
-    public boolean updateOpenMethode(long id, String openMethod) {
-        Optional<Banner> optionalBanner = bannerRepository.findById(id);
-        if(!optionalBanner.isPresent()){
-            throw new NullPointerException("배너정보가 존재하지 않습니다.");
-        }
-        Banner banner = optionalBanner.get();
-        banner.setOpenMethod(openMethod);
-        bannerRepository.save(banner);
-        return true;
-    }
+
 }

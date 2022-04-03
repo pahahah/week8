@@ -157,11 +157,7 @@ public class AdminBannerController extends BaseController {
         return "redirect:/admin/banner/list.do";
     }
 
-    @PostMapping("/admin/banner/open.do")
-    public String open(Model model, BannerInput parameter){
-        boolean result = bannerService.updateOpenMethode(parameter.getId(), parameter.getOpenMethod());
-        return "redirect:/admin/banner/list.do";
-    }
+
 
 
 }
